@@ -1,1 +1,82 @@
-x
+#include <iostream>
+using namespace std;
+
+struct Student{
+
+    string name;
+    int math;
+    int programming;
+    int logic;
+
+    int sum;
+    float average;
+};
+
+void calculate(Student &s){
+
+    s.sum = s.math + s.programming + s.logic;
+
+    s.average = s.sum / 3.0;
+}
+
+int main(){
+
+    Student st[20];
+
+    // إدخال البيانات
+    for(int i=0;i<20;i++){
+
+        cout << "Enter name: ";
+        cin >> st[i].name;
+
+        cout << "Math mark: ";
+        cin >> st[i].math;
+
+        cout << "Programming mark: ";
+        cin >> st[i].programming;
+
+        cout << "Logic mark: ";
+        cin >> st[i].logic;
+
+        calculate(st[i]);
+    }
+
+    // طباعة الجميع
+    cout << "\nStudents Information:\n";
+
+    for(int i=0;i<20;i++){
+
+        cout << st[i].name << " ";
+
+        cout << st[i].math << " ";
+
+        cout << st[i].programming << " ";
+
+        cout << st[i].logic << " ";
+
+        cout << st[i].sum << " ";
+
+        cout << st[i].average << endl;
+    }
+
+    // أعلى معدل
+    int maxIndex = 0;
+
+    for(int i=1;i<20;i++){
+
+        if(st[i].average > st[maxIndex].average){
+
+            maxIndex = i;
+        }
+    }
+
+    cout << "\nHighest Average Student:\n";
+
+    cout << st[maxIndex].name << endl;
+
+    cout << st[maxIndex].sum << endl;
+
+    cout << st[maxIndex].average << endl;
+
+    return 0;
+}x
